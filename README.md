@@ -15,7 +15,7 @@
 - has_many :chart_users
 - has_many :charts, through: :chart_users
 - has_many :assessments
-- has_many :diarys
+- has_many :diaries
 - has_many :guidances
 
 ## charts テーブル
@@ -27,7 +27,7 @@
 - has_many :chart_users
 - has_many :users through: :chart_users
 - has_many :assessments
-- has_many :diarys
+- has_many :diaries
 - has_many :guidances
 
 ## chart_users テーブル
@@ -46,7 +46,7 @@
 | purpose                   | string     | null :false                    |
 | weight                    | integer    | null :false                    |
 | pain_id                   | integer    | null :false                    |
-| desesthesia_id            | integer    | null :false                    |
+| dysesthesia_id            | integer    | null :false                    |
 | sensory_id                | integer    | null :false                    |
 | strength_hip_flexion_id   | integer    | null :false                    |
 | strength_hip_extension_id | integer    | null :false                    |
@@ -68,7 +68,7 @@
 - belongs_to :user
 - belongs_to :chart
 
-## diarys テーブル
+## diaries テーブル
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | exercise | text       | null :false                    |
@@ -77,7 +77,7 @@
 
 ### Association
 - belongs_to :user
-- delongs_to :chart
+- belongs_to :chart
 
 ## guidances テーブル
 | Column   | Type       | Options                        |
