@@ -13,9 +13,16 @@
     </div>
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
-        <label class='chat-room-form__label' for='chat_room_チャットメンバー'>アドバイザーを選ぶ</label>
+        <label class='chat-room-form__label' for='chat_room_チャットメンバー'>アドバイザーリスト</label>
       </div>
       <div class='chat-room-form__field--right'>
+        <select name="chart[user_ids][]" >
+          <option value="">クリニック所属のアドバイザーを選択してください</option>
+          <% User.where.not(id: current_user.id).each do |user| %>
+            <option value=><%= user.id %>><%= user.nickname %><%= user.lastname %><%= user.firstname %></option>
+          <% end %>
+        </select>
+        <input name="chart[user_ids][]" type="hidden" value=<%= current_user.id %>>
       </div>
     </div>
     <div class='chat-room-form__field'>
