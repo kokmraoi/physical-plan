@@ -6,7 +6,7 @@
         <%= f.label :name, :カルテ名, class: 'chat-room-form__label'%>
       </div>
       <div class='chat-room-form__field--right'>
-        <%= f.text_field :name, class: 'chat__room_name chat-room-form__input', placeholder: 'チャットルーム名を入力してください'%>
+        <%= f.text_field :name, class: 'chat__room_name chat-room-form__input', placeholder: 'カルテ名を入力してください'%>
       </div>
     </div>
     <div class='chat-room-form__field'>
@@ -16,10 +16,10 @@
         <label class='chat-room-form__label' for='chat_room_チャットメンバー'>アドバイザーリスト</label>
       </div>
       <div class='chat-room-form__field--right'>
-        <select name="chart[user_ids][]" >
+        <select name="chart[user_ids][]">
           <option value="">クリニック所属のアドバイザーを選択してください</option>
           <% User.where.not(id: current_user.id).each do |user| %>
-            <option value=><%= user.id %>><%= user.nickname %><%= user.lastname %><%= user.firstname %></option>
+            <option value=<%= user.id %>><%= user.nickname %><%= user.lastname %><%= user.firstname %></option>
           <% end %>
         </select>
         <input name="chart[user_ids][]" type="hidden" value=<%= current_user.id %>>
