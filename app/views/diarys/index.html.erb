@@ -46,6 +46,10 @@
         <% if user_signed_in? %>
           <%= link_to current_user.nickname, edit_user_path(current_user), class: "nav-link" %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "カルテ作成", new_chart_path, class: "nav-link" %>
+          <% current_user.charts.each do |chart| %>
+            <a href="/charts" class="nav-link"><%= chart.name %></a>
+          <% end %>
         <% else %>
           <a class="nav-link" href="/users/sign_up">Signup</a>
           <a class="nav-link" href="/users/sign_in">Login</a>
@@ -58,7 +62,7 @@
     <h1>あなただけの特別なプランを。</h1>
     <p class="lead">マイカルテを作り、フィジカルパフォーマンスのサマリーを作成。ライプラン達成に影響し得るフィジカル因子の抽出と予測に基づくエクササイズを行い、いつまでもやりたいことができる人生に。</p>
     <p class="lead">
-      <a href="/users/sign_up" class="btn btn-lg btn-secondary fw-bold border-white bg-white">新規登録してはじめる</a>
+      <a href="/users/sign_up" class="text-dark btn btn-lg btn-secondary fw-bold border-white bg-white">新規登録してはじめる</a>
     </p>
   </main>
 

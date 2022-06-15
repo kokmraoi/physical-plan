@@ -18,4 +18,7 @@ class User < ApplicationRecord
   end
   validates :birthday, presence: true
   validates :profile, presence: true
+
+  has_many :chart_users
+  has_many :charts, through: :chart_users
 end
