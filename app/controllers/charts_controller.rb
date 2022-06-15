@@ -1,4 +1,7 @@
 class ChartsController < ApplicationController
+  def index
+  end
+  
   def new
     @chart = Chart.new
   end
