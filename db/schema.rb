@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_023307) do
+ActiveRecord::Schema.define(version: 2022_06_15_143005) do
+
+  create_table "assessments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "purpose", null: false
+    t.integer "weight", null: false
+    t.integer "pain_hip_id", null: false
+    t.integer "dysesthesia_hip_id", null: false
+    t.integer "sensory_hip_id", null: false
+    t.integer "strength_hip_flexion_id", null: false
+    t.integer "strength_hip_extension_id", null: false
+    t.integer "strength_hip_abduction_id", null: false
+    t.integer "strength_hip_adduction_id", null: false
+    t.integer "strength_hip_external_id", null: false
+    t.integer "strength_hip_internal_id", null: false
+    t.integer "range_hip_flexion_id", null: false
+    t.integer "range_hip_extension_id", null: false
+    t.integer "range_hip_abduction_id", null: false
+    t.integer "range_hip_adduction_id", null: false
+    t.integer "range_hip_external_id", null: false
+    t.integer "range_hip_internal_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "chart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chart_id"], name: "index_assessments_on_chart_id"
+    t.index ["user_id"], name: "index_assessments_on_user_id"
+  end
 
   create_table "chart_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -46,6 +72,8 @@ ActiveRecord::Schema.define(version: 2022_06_11_023307) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assessments", "charts"
+  add_foreign_key "assessments", "users"
   add_foreign_key "chart_users", "charts"
   add_foreign_key "chart_users", "users"
 end

@@ -31,8 +31,8 @@ https://physical-plan.herokuapp.com/
 アプリケーションを開発するにあたり、身体機能をただ測定するだけではなく、目標のもとにアセスメントを行う事でより必要な身体機能にアプローチすることができるのではないかと考えた。
 
 # 実装予定の機能
-現在、ダイアリー管理機能を実装中。  
-よりカスタマイズされた指導を受けられるガイダンス機能、自分の症状にあったアドバイザーを選択できるタグ機能、利益を得るためのリクエスト機能を実装予定。
+現在、アセスメント管理機能を実装中。  
+日々のエクササイズ記録を保存できる機能、よりカスタマイズされた指導を受けられるガイダンス機能、自分の症状にあったアドバイザーを選択できるタグ機能、利益を得るためのリクエスト機能を実装予定。
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/d61adba8a3f3792d60c43285a0637ad8.png)](https://gyazo.com/d61adba8a3f3792d60c43285a0637ad8)
@@ -70,7 +70,7 @@ https://physical-plan.herokuapp.com/
 - has_many :chart_users
 - has_many :charts, through: :chart_users
 - has_many :assessments
-- has_many :diaries
+- has_many :diarys
 - has_many :guidances
 
 ## charts テーブル
@@ -80,9 +80,9 @@ https://physical-plan.herokuapp.com/
 
 ### Association
 - has_many :chart_users
-- has_many :users through: :chart_users
+- has_many :users, through: :chart_users
 - has_many :assessments
-- has_many :diaries
+- has_many :diarys
 - has_many :guidances
 
 ## chart_users テーブル
@@ -98,11 +98,11 @@ https://physical-plan.herokuapp.com/
 ## assessments テーブル
 | Column                    | Type       | Options                        |
 | ------------------------- | ---------- | ------------------------------ |
-| purpose                   | string     | null :false                    |
+| purpose                   | text       | null :false                    |
 | weight                    | integer    | null :false                    |
-| pain_id                   | integer    | null :false                    |
-| dysesthesia_id            | integer    | null :false                    |
-| sensory_id                | integer    | null :false                    |
+| pain_hip_id               | integer    | null :false                    |
+| dysesthesia_hip_id        | integer    | null :false                    |
+| sensory_hip_id            | integer    | null :false                    |
 | strength_hip_flexion_id   | integer    | null :false                    |
 | strength_hip_extension_id | integer    | null :false                    |
 | strength_hip_abduction_id | integer    | null :false                    |
@@ -115,7 +115,6 @@ https://physical-plan.herokuapp.com/
 | range_hip_adduction_id    | integer    | null :false                    |
 | range_hip_external_id     | integer    | null :false                    |
 | range_hip_internal_id     | integer    | null :false                    |
-| price                     | integer    | null :false                    |
 | user                      | references | null :false, foreign_key: true |
 | chart                     | references | null :false, foreign_key: true |
 
